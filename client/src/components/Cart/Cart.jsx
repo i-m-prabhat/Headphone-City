@@ -3,7 +3,7 @@ import React from "react";
 import {MdClose} from "react-icons/md"
 import {BsCartX} from "react-icons/bs"
 
-import CartItem from "./CartItem"
+import CartItem from "./CartItem/CartItem"
 
 import "./Cart.scss";
 const Cart = ({setShowCart}) => {
@@ -24,6 +24,15 @@ const Cart = ({setShowCart}) => {
             </div> */}
             <>
                 <CartItem />
+                <div className="cart-footer">
+                    <div className="subtotal">
+                        <span className="text">Subtotal:</span>
+                        <span className="text total">&#8377;1234</span>
+                    </div>
+                    <div className="button">
+                        <button className="checkout-cta">Checkout</button>
+                    </div>
+                </div>
             </>
         </div>
     </div>;
