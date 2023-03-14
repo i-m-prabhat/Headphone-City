@@ -15,7 +15,7 @@ const useFetch = (endpoint) =>
         const res = await fetchDataFromApi(endpoint)
         setData(res)
     }
-    return data
+    return { data }
 }
 
 export default useFetch;
