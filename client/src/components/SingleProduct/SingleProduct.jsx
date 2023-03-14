@@ -13,18 +13,27 @@ import
 }
     from "react-icons/fa"
 import Prod from "../../assets/products/headphone-prod-1.webp"
+import useFetch from "../../hooks/useFetch"
+import { useParams } from "react-router-dom";
+
 const SingleProduct = () =>
 {
+    const { id } = useParams();
+    const { data } = useFetch(`/api/products?populate=*&[filters][id]=${id}`)
+
+    if (!data) return;
+    const product = data.data[0].attributes
+
     return <div className="simgle-product-main-content">
         <div className="layout">
             <div className="single-product-page">
                 <div className="left">
-                    <img src={Prod} alt="product image" />
+                    <img src={process.env.REACT_APP_DEV_URL + product.img.data[0].attributes.url} alt="product image" />
                 </div>
                 <div className="right">
-                    <span className="name">Product name</span>
-                    <span className="price">Price</span>
-                    <span className="desc">Product Description</span>
+                    <span className="name">{product.title}</span>
+                    <span className="price">&#8377; {product.price}</span>
+                    <span className="desc">{product.desc}</span>
 
                     <div className="cart-buttons">
                         <div className="quantity-buttons">
@@ -42,8 +51,8 @@ const SingleProduct = () =>
 
                     <div className="info-item">
                         <span className="text-bold">
-                            Category:
-                            <span> Headphones</span>
+                            Category: {" "}
+                            <span> {product.categories.data[0].attributes.title}</span>
                         </span>
                         <span className="text-bold">
                             Share:
@@ -58,7 +67,7 @@ const SingleProduct = () =>
                     </div>
                 </div>
             </div>
-            <RelatedProducts/>
+            <RelatedProducts />
         </div>
     </div>;
 };
