@@ -1,19 +1,20 @@
 import React from "react";
 
-import {MdClose} from "react-icons/md"
-import {BsCartX} from "react-icons/bs"
+import { MdClose } from "react-icons/md"
+import { BsCartX } from "react-icons/bs"
 
 import CartItem from "./CartItem/CartItem"
 
 import "./Cart.scss";
-const Cart = ({setShowCart}) => {
+const Cart = ({ setShowCart }) =>
+{
     return <div className="cart-panel">
         <div className="opac-layer"></div>
         <div className="cart-content">
             <div className="cart-header">
                 <span className="heading">Shoppin Cart</span>
-                <span className="close-btn" onClick={()=> setShowCart(false)}>
-                    <MdClose/>
+                <span className="close-btn" onClick={() => setShowCart(false)}>
+                    <MdClose />
                     <span className="text">close</span>
                 </span>
             </div>

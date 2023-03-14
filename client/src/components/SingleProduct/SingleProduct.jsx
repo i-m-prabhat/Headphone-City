@@ -2,7 +2,7 @@
 import React from "react";
 import "./SingleProduct.scss";
 import RelatedProducts from "./RelatedProducts/RelatedProducts"
-import { useState } from "react";
+import { useState, useContext } from "react";
 import
 {
     FaFacebookF,
@@ -13,9 +13,10 @@ import
     FaCartPlus
 }
     from "react-icons/fa"
-import Prod from "../../assets/products/headphone-prod-1.webp"
+// import Prod from "../../assets/products/headphone-prod-1.webp"
 import useFetch from "../../hooks/useFetch"
 import { useParams } from "react-router-dom";
+import { Context } from "../../utils/context";
 
 const SingleProduct = () =>
 {
@@ -39,6 +40,9 @@ const SingleProduct = () =>
 
     const { id } = useParams();
     const { data } = useFetch(`/api/products?populate=*&[filters][id]=${id}`)
+    const { handleAddToCart } = useContext(Cortest);
+
+
 
     if (!data) return;
     const product = data.data[0].attributes
@@ -61,7 +65,9 @@ const SingleProduct = () =>
                             <span onClick={increment}>+</span>
                         </div>
                         <button className="add-to-cart-button">
-                            <FaCartPlus size={20} />
+                            <FaCartPlus size={20} onClick={() => { handleAddToCart(data.data[0], quantity) }
+                            setQuantity(1);
+                            } />
                             Add To Cart
                         </button>
                     </div>
