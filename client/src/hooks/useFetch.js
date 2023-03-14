@@ -5,7 +5,7 @@ const useFetch = (endpoint) =>
 {
     const [data, setData] = useState()
 
-    useEffect(async () =>
+    useEffect(() =>
     {
         makeApiCall()
     }, [endpoint])
