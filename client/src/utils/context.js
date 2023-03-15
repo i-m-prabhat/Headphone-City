@@ -14,8 +14,11 @@ const AppContext = ({ children }) =>
 
     useEffect(() =>
     {
-
-    }, [cartItems])
+        let subTotal = 0;
+        cartItems.map((item) => (subTotal += item.attributes.price * item.attributes.quantity)
+        );
+        setCartSubTotal(subTotal);
+    }, [cartItems]);
 
     const handleAddToCart = (product, quantity) =>
     {
