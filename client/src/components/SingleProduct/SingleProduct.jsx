@@ -22,6 +22,10 @@ const SingleProduct = () =>
 {
     const [quantity, setQuantity] = useState(1);
 
+    const { id } = useParams();
+    const { data } = useFetch(`/api/products?populate=*&[filters][id]=${id}`)
+    const { handleAddToCart } = useContext(Context);
+
     const increment = () =>
     {
         setQuantity((prevState) => prevState + 1)
@@ -37,10 +41,6 @@ const SingleProduct = () =>
             return prevState - 1;
         })
     };
-
-    const { id } = useParams();
-    const { data } = useFetch(`/api/products?populate=*&[filters][id]=${id}`)
-    const { handleAddToCart } = useContext(Cortest);
 
 
 
@@ -64,11 +64,16 @@ const SingleProduct = () =>
                             <span>{quantity}</span>
                             <span onClick={increment}>+</span>
                         </div>
-                        <button className="add-to-cart-button">
-                            <FaCartPlus size={20} onClick={() => { handleAddToCart(data.data[0], quantity) }
-                            setQuantity(1);
-                            } />
-                            Add To Cart
+                        <button
+                            className="add-to-cart-button"
+                            onClick={() =>
+                            {
+                                handleAddToCart(data?.data?.[0], quantity);
+                                setQuantity(1);
+                            }}
+                        >
+                            <FaCartPlus size={20} />
+                            ADD TO CART
                         </button>
                     </div>
 

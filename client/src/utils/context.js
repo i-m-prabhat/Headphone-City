@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 export const Context = createContext();
@@ -21,12 +21,12 @@ const AppContext = ({ children }) =>
     {
         let items = [...cartItems];
         let index = items.findIndex(p => p.id === product.id)
-        if (index !== -1)
+        if (index !== - 1)
         {
             items[index].attributes.quantity += quantity
         } else
         {
-            products.attributes.quantity = quantity
+            product.attributes.quantity = quantity
             items = [...items, product];
         }
         setCartItems(items);
@@ -51,7 +51,10 @@ const AppContext = ({ children }) =>
         cartCount,
         setCartCount,
         cartSubTotal,
-        setCartSubTotal
+        setCartSubTotal,
+        handleAddToCart,
+        handleRemoveFromCart,
+        handleCartProductQuantity
     }}>{children}</Context.Provider>
 };
 
