@@ -20,12 +20,12 @@ const Cart = ({ setShowCart }) =>
                     <span className="text">close</span>
                 </span>
             </div>
-            {/* <div className="empty-cart">
-                <BsCartX/>
+            {!cartItems?.length && <div className="empty-cart">
+                <BsCartX />
                 <span>No products in the cart.</span>
                 <button className="return-cta">RETURN TO SHOP</button>
-            </div> */}
-            <>
+            </div>}
+            {!!cartItems?.length && <>
                 <CartItem />
                 <div className="cart-footer">
                     <div className="subtotal">
@@ -36,9 +36,9 @@ const Cart = ({ setShowCart }) =>
                         <button className="checkout-cta">Checkout</button>
                     </div>
                 </div>
-            </>
+            </>}
         </div>
-    </div>;
+    </div >;
 };
 
 export default Cart;
