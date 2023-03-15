@@ -38,7 +38,20 @@ const AppContext = ({ children }) =>
         items = items.filter((p) => p.id !== product.id);
         setCartItems(items);
     }
-    const handleCartProductQuantity = (type, product) => { }
+    const handleCartProductQuantity = (type, product) =>
+    {
+        let items = [...cartItems];
+        let index = items.findIndex(p => p.id === product.id)
+        if (type === "inc")
+        {
+            items[index].attributes.quantity += 1
+        } else if (type === "dec")
+        {
+            if (items[index].attributes.quantity === 1) return;
+            items[index].attributes.quantity -= 1;
+        }
+        setCartItems(items);
+    }
 
 
     return <Context.Provider value={{
