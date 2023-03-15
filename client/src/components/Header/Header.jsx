@@ -47,7 +47,7 @@ const Header = () =>
                     <AiOutlineHeart />
                     <span className="cart-icon" onClick={() => setShowCart(true)}>
                         <CgShoppingCart />
-                        <span>{cartCount}</span>
+                        {!!cartCount && <span>{cartCount}</span>}
                     </span>
                 </div>
             </div>
