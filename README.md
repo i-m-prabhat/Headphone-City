@@ -1,7 +1,9 @@
 # Headphone-City
 This is the E-commerce Headphone Store. created with React js, strapi and sass
 
-## snapshots
+❗ Currently api is not hosted so product and checkout page is not visible but You can checkout our app in Snapshots
+
+## Snapshots
 
 ## Home Page
 
